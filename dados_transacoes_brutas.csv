@@ -1,0 +1,21 @@
+id_cliente,nome_cliente,data_transacao,descricao,valor
+1,Alice,2017-06-29,PIX Recebido de Conta Poupança,1000000.0
+1,Alice,2017-07-05,Salário Mensal Corporativo,1000000.0
+1,Alice,2017-07-18,Transferência PIX Recebida,500000.0
+1,Alice,2017-08-01,Rendimento CDB Recebido,3000000.0
+3,Carla,2016-09-05,PIX Recebido de Conta Poupança,500000.0
+3,Carla,2016-09-06,Shopping Iguatemi Estacionamento,-802.77
+3,Carla,2016-09-06,Padaria Central Pão,-239.89
+3,Carla,2016-09-06,Uber Corrida de Negócios,-1193.54
+4,Daniel,2016-02-23,PIX Recebido de Conta Poupança,21000.0
+4,Daniel,2016-02-23,Salário Mensal Corporativo,1000.0
+4,Daniel,2016-02-29,Transferência PIX Recebida,21000.0
+4,Daniel,2016-03-02,Rendimento CDB Recebido,21000.0
+2,Bruno,2016-01-30,Cinema Play Ingresso,-170000000.0
+2,Bruno,2016-01-30,Shopping Iguatemi Estacionamento,-30000000.0
+2,Bruno,2016-01-31,Padaria Central Pão,-126230.0
+2,Bruno,2016-02-01,Rendimento CDB Recebido,130000.0
+5,Elisa,2017-04-07,PIX Recebido de Conta Poupança,500000.0
+5,Elisa,2017-04-07,Supermercado Pão de Açúcar Compra,-150.0
+5,Elisa,2017-04-07,Netflix Mensalidade Premium,-21.0
+5,Elisa,2017-04-07,Restaurante Silva Jantar,-0.75

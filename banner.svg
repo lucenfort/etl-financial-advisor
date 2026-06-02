@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0a1b" />
+      <stop offset="50%" stop-color="#120e24" />
+      <stop offset="100%" stop-color="#05030a" />
+    </linearGradient>
+
+    <!-- Neon Glow Gradients -->
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff007f" />
+      <stop offset="100%" stop-color="#7f00ff" />
+    </linearGradient>
+
+    <!-- Filters for Glow Effects -->
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glow-magenta" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    /* CSS Styles and Keyframe Animations inside the SVG */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -40;
+      }
+    }
+    @keyframes db-blink {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; stroke: #00f2fe; }
+    }
+    @keyframes bounce-arrow {
+      0%, 100% { transform: translateY(-1px); }
+      50% { transform: translateY(3px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(0, 242, 254, 0.3)); }
+      50% { filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.7)); }
+    }
+    @keyframes pulse-glow-accent {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(255, 0, 127, 0.3)); }
+      50% { filter: drop-shadow(0 0 12px rgba(255, 0, 127, 0.8)); }
+    }
+    
+    .bg { fill: url(#bg-grad); }
+    
+    /* Connection lines remain static to prevent visual misalignments */
+    .pipeline-line {
+      stroke: #1e193d;
+      stroke-width: 4;
+      stroke-linecap: round;
+    }
+    
+    /* Moving data packets along the line representing the ETL flow */
+    .pipeline-flow {
+      stroke: url(#primary-grad);
+      stroke-width: 4;
+      stroke-dasharray: 10, 30;
+      stroke-linecap: round;
+      animation: dash 1.5s linear infinite;
+    }
+    
+    /* Node styling with pulsing glow effects in place */
+    .node-circle {
+      fill: #0c081e;
+      stroke: url(#primary-grad);
+      stroke-width: 2.5;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    .node-circle-accent {
+      stroke: url(#accent-grad);
+      animation: pulse-glow-accent 3s ease-in-out infinite;
+    }
+
+    /* Functional animations for icons */
+    .spinning-gear {
+      animation: spin 10s linear infinite;
+      transform-origin: 0px 0px;
+    }
+    .db-layer-2 {
+      animation: db-blink 2s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+    .db-layer-3 {
+      animation: db-blink 2s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+    .load-arrow {
+      animation: bounce-arrow 1.5s ease-in-out infinite;
+    }
+    
+    .text-title {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      fill: #ffffff;
+      letter-spacing: 2px;
+    }
+    .text-subtitle {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      fill: #00f2fe;
+      letter-spacing: 5px;
+    }
+    .node-label {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      fill: #e2e8f0;
+      text-anchor: middle;
+      letter-spacing: 1px;
+    }
+    .node-sublabel {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      fill: #a0aec0;
+      text-anchor: middle;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect class="bg" width="800" height="250" rx="15" />
+  
+  <!-- Subtle Grid Pattern in Background -->
+  <g opacity="0.04">
+    <path d="M 0 50 L 800 50 M 0 100 L 800 100 M 0 150 L 800 150 M 0 200 L 800 200" stroke="#ffffff" stroke-width="1"/>
+    <path d="M 100 0 L 100 250 M 200 0 L 200 250 M 300 0 L 300 250 M 400 0 L 400 250 M 500 0 L 500 250 M 600 0 L 600 250 M 700 0 L 700 250" stroke="#ffffff" stroke-width="1"/>
+  </g>
+
+  <!-- Title & Branding -->
+  <g transform="translate(50, 60)">
+    <text class="text-title" x="0" y="0">ORIENTADOR FINANCEIRO</text>
+    <text class="text-subtitle" x="3" y="24">ETL PIPELINE • PANDAS &amp; PYTHON</text>
+  </g>
+
+  <!-- Pipeline Lines (Connecting Nodes at perfect outer edges) -->
+  <g transform="translate(0, 45)">
+    <!-- Extract (right edge x=222) to Transform (left edge x=364) -->
+    <path class="pipeline-line" d="M 222,115 L 364,115" />
+    <path class="pipeline-flow" d="M 222,115 L 364,115" />
+    
+    <!-- Transform (right edge x=436) to Load (left edge x=578) -->
+    <path class="pipeline-line" d="M 436,115 L 578,115" />
+    <path class="pipeline-flow" d="M 436,115 L 578,115" />
+  </g>
+
+  <!-- Nodes Group -->
+  <g transform="translate(0, 45)">
+    <!-- NODE 1: EXTRACT (Database) -->
+    <g transform="translate(190, 115)">
+      <circle class="node-circle" r="32" />
+      <!-- Pulsing DB Cylinders representing data extraction -->
+      <g transform="translate(-12, -14)" stroke="#00b4d8" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round">
+        <ellipse cx="12" cy="6" rx="9" ry="3" stroke="#00f2fe" />
+        <path d="M 3,6 L 3,12 A 9,3 0 0 0 21,12 L 21,6" class="db-layer-2" />
+        <path d="M 3,12 L 3,18 A 9,3 0 0 0 21,18 L 21,12" class="db-layer-3" />
+      </g>
+      <text class="node-label" x="0" y="52">EXTRAÇÃO</text>
+      <text class="node-sublabel" x="0" y="66">data/bank.xlsx</text>
+    </g>
+
+    <!-- NODE 2: TRANSFORM (Spinning Gear / Processing) -->
+    <g transform="translate(400, 115)">
+      <circle class="node-circle node-circle-accent" r="36" />
+      <!-- Spinning Gear Container -->
+      <g class="spinning-gear">
+        <g transform="translate(-15, -15)" stroke="#ff007f" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M15,9 C11.7,9 9,11.7 9,15 C9,18.3 11.7,21 15,21 C18.3,21 21,18.3 21,15 C21,11.7 18.3,9 15,9 Z" />
+          <path d="M15,5 L15,9 M15,21 L15,25 M5,15 L9,15 M21,15 L25,15" />
+          <path d="M7.9,7.9 L10.8,10.8 M19.2,19.2 L22.1,22.1 M7.9,22.1 L10.8,19.2 M19.2,10.8 L22.1,7.9" />
+        </g>
+      </g>
+      <text class="node-label" x="0" y="56" style="fill: #ff007f;">TRANSFORMAÇÃO</text>
+      <text class="node-sublabel" x="0" y="70">Métricas &amp; Selic</text>
+    </g>
+
+    <!-- NODE 3: LOAD (Folder & Bouncing Arrow) -->
+    <g transform="translate(610, 115)">
+      <circle class="node-circle" r="32" />
+      <!-- Folder with bouncing arrow representing file loading -->
+      <g transform="translate(-13, -12)" stroke="#4facfe" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+        <g class="load-arrow">
+          <path d="M12 11v6M9 14l3 3 3-3" />
+        </g>
+      </g>
+      <text class="node-label" x="0" y="52">CARREGAMENTO</text>
+      <text class="node-sublabel" x="0" y="66">CSV &amp; JSON Insights</text>
+    </g>
+  </g>
+</svg>

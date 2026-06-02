@@ -1,0 +1,37 @@
+{
+  "1": {
+    "nome_cliente": "Alice",
+    "saldo_final": 5500000.0,
+    "total_despesas": 0.0,
+    "maior_ralo_financeiro": "Nenhum",
+    "insight": "Parabéns, Alice! Suas finanças estão saudáveis com saldo de R$ 5500000.00. Seus gastos totais foram R$ 0.00, concentrados principalmente em 'Nenhum' (R$ 0.00). Recomendamos aplicar suas economias. Com a Selic a 10.5% a.a., esse saldo renderia aproximadamente R$ 577500.00 em 12 meses. Sua saúde financeira está excelente, continue assim!"
+  },
+  "2": {
+    "nome_cliente": "Bruno",
+    "saldo_final": -199996230.0,
+    "total_despesas": 200126230.0,
+    "maior_ralo_financeiro": "Entretenimento",
+    "insight": "Atenção, Bruno! Seu saldo final fechou no vermelho em -R$ 199996230.00. Identificamos que seu maior dreno financeiro foi na categoria 'Entretenimento' (R$ 200000000.00). Recomendamos que você corte gastos supérfluos e monte um planejamento rígido de emergência."
+  },
+  "3": {
+    "nome_cliente": "Carla",
+    "saldo_final": 497763.8,
+    "total_despesas": 2236.2,
+    "maior_ralo_financeiro": "Transporte",
+    "insight": "Parabéns, Carla! Suas finanças estão saudáveis com saldo de R$ 497763.80. Seus gastos totais foram R$ 2236.20, concentrados principalmente em 'Transporte' (R$ 1193.54). Recomendamos aplicar suas economias. Com a Selic a 10.5% a.a., esse saldo renderia aproximadamente R$ 52265.20 em 12 meses. Como o custo de transporte foi relevante, analise opções de otimização de rotas."
+  },
+  "4": {
+    "nome_cliente": "Daniel",
+    "saldo_final": 64000.0,
+    "total_despesas": 0.0,
+    "maior_ralo_financeiro": "Nenhum",
+    "insight": "Parabéns, Daniel! Suas finanças estão saudáveis com saldo de R$ 64000.00. Seus gastos totais foram R$ 0.00, concentrados principalmente em 'Nenhum' (R$ 0.00). Recomendamos aplicar suas economias. Com a Selic a 10.5% a.a., esse saldo renderia aproximadamente R$ 6720.00 em 12 meses. Sua saúde financeira está excelente, continue assim!"
+  },
+  "5": {
+    "nome_cliente": "Elisa",
+    "saldo_final": 499828.25,
+    "total_despesas": 171.75,
+    "maior_ralo_financeiro": "Alimentação",
+    "insight": "Parabéns, Elisa! Suas finanças estão saudáveis com saldo de R$ 499828.25. Seus gastos totais foram R$ 171.75, concentrados principalmente em 'Alimentação' (R$ 150.75). Recomendamos aplicar suas economias. Com a Selic a 10.5% a.a., esse saldo renderia aproximadamente R$ 52481.97 em 12 meses. Sua saúde financeira está excelente, continue assim!"
+  }
+}
