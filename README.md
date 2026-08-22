@@ -1,29 +1,32 @@
-# Pipeline ETL: Orientador Financeiro Personalizado (Kaggle Dataset)
+<div align="center">
+  <img src="assets/banner.svg" alt="ETL Financial Advisor Banner" width="100%" />
 
-![ETL Pipeline Banner](banner.svg)
+  <br/><br/>
 
-Este projeto implementa uma solução completa de **ETL (Extração, Transformação e Carregamento)** em Python utilizando a biblioteca **Pandas**. O pipeline foi desenvolvido como um projeto de portfólio voltado para Ciência e Engenharia de Dados, simulando o comportamento de uma consultoria financeira automática.
-
-A fonte original de dados de transações brutas é inspirada e compatível com o dataset real **[Bank Transaction Data do Kaggle](https://www.kaggle.com/datasets/apoorvwatsky/bank-transaction-data)**.
+  <p align="center">
+    <strong>Pipeline ETL de Inteligência Financeira &amp; Consultoria Automatizada</strong><br/>
+    Extração multi-origem, categorização inteligente de transações, enriquecimento de métricas e simulação de investimentos baseada no <strong>Kaggle Bank Transaction Data</strong>.
+  </p>
+</div>
 
 ---
 
-## 🏗️ Arquitetura do Pipeline ETL
+## 📌 1. Visão Geral da Arquitetura do Pipeline
 
-O fluxo de dados é estruturado de maneira modular, com logs detalhados a cada fase do processo:
+O pipeline foi concebido com arquitetura desacoplada em 3 fases sequenciais com logs detalhados e tratamento robusto de exceções:
 
 ```mermaid
-graph TD
+graph LR
     subgraph extract ["1. Extração (Extract)"]
         A1[dados_transacoes_brutas.csv] -->|Leitura Direta| B[DataFrame Pandas]
-        A2[data/bank.xlsx - Kaggle] -->|Filtro e Tradução| B
-        A3[Dados Sintéticos Programáticos] -->|Fallback| B
+        A2[data/bank.xlsx - Kaggle] -->|Filtro & Tradução| B
+        A3[Fallback Sintético] -->|Geração Dinâmica| B
     end
     subgraph transform ["2. Transformação (Transform)"]
-        B --> C[Categorização Automática por Palavra-Chave]
+        B --> C[Categorização Textual por Regras]
         C --> D[Agregação Analítica por Cliente]
-        D --> E[Cálculo de Saldo, Gasto Total e Maior Ralo]
-        E --> F[Geração de Insights Financeiros Dinâmicos]
+        D --> E[Cálculo de Balanço, Despesas & Ralo Financeiro]
+        E --> F[Simulação de Rendimento Selic 10.5% a.a.]
     end
     subgraph load ["3. Carregamento (Load)"]
         C --> G[output/relatorio_transacoes_enriquecidas.csv]
@@ -31,66 +34,89 @@ graph TD
     end
 ```
 
-### 1. Extração (Extract)
-O script lê e processa as transações brutas priorizando a seguinte ordem de fontes:
-1.  **`dados_transacoes_brutas.csv`**: Carregamento imediato caso o arquivo CSV de transações formatadas já exista.
-2.  **`data/bank.xlsx` (Dataset Kaggle)**: Se o arquivo Excel bruto do Kaggle estiver presente, o script seleciona registros de 5 contas diferentes, traduz para nomes em português, formata datas, calcula o valor financeiro líquido (Depósito positivo / Retirada negativa) e injeta descrições brasileiras realistas. O resultado é salvo como `dados_transacoes_brutas.csv` para otimizar futuras execuções.
-3.  **Fallback Sintético**: Caso nenhum arquivo esteja disponível, um conjunto de 20 transações realistas de 5 clientes distintos é gerado dinamicamente via Pandas.
+---
 
-### 2. Transformação (Transform)
-*   **Enriquecimento de Categorias:** Classificação automática das transações usando termos da descrição:
-    *   `Uber` ➡️ **Transporte**
-    *   `Supermercado`, `Restaurante` ou `Padaria` ➡️ **Alimentação**
-    *   `Netflix`, `Cinema` ou `Shopping` ➡️ **Entretenimento**
-    *   `PIX`, `Salário` ou `Rendimento` ➡️ **Receita**
-    *   Outros padrões ➡️ **Outros**
-*   **Análise Científica:**
-    *   **Saldo Final:** Balanço de todas as entradas e saídas.
-    *   **Total de Despesas:** Soma do valor absoluto das saídas.
-    *   **Maior Ralo Financeiro:** A categoria onde o cliente acumulou o maior gasto em reais.
-*   **Módulo Orientador (Insights):** Geração de conselhos específicos para cada cliente. Clientes com saldos saudáveis recebem estimativa de rendimento anual simulado sobre a taxa **Selic (10.5% a.a.)**, enquanto perfis deficitários ou muito apertados recebem alertas de segurança e controle de custos.
+## 📁 2. Estrutura do Repositório
 
-### 3. Carregamento (Load)
-Os resultados finais consolidados são persistidos localmente na pasta `output/`:
-*   **`output/relatorio_transacoes_enriquecidas.csv`**: Histórico detalhado de todas as transações com a coluna de categorização.
-*   **`output/insights_orientador_financeiro.json`**: Arquivo JSON mapeando cada cliente para suas métricas chave e o conselho gerado.
+```text
+etl-financial-advisor/
+├── assets/                  # Banners dinâmicos e identidades visuais do pipeline
+├── data/                    # Diretório contendo dados brutos originais do Kaggle (bank.xlsx)
+├── output/                  # Artefatos enriquecidos gerados pelo pipeline (CSV e JSON)
+│   ├── relatorio_transacoes_enriquecidas.csv
+│   └── insights_orientador_financeiro.json
+├── dados_transacoes_brutas.csv # Amostra processada intermediária para execuções rápidas
+├── etl_pipeline.py          # Script principal e modular do pipeline ETL completo
+├── requirements.txt         # Dependências do ecossistema Python (Pandas, OpenPyXL)
+├── banner.svg               # Banner animado em alta resolução
+└── README.md                # Documentação técnica e guia de execução
+```
 
 ---
 
-## 🛠️ Tecnologias e Boas Práticas
-
-*   **Linguagem:** Python 3.x
-*   **Processamento e Análise:** Pandas
-*   **Boas Práticas:** Padrões PEP 8, código modularizado em funções claras, logs informativos e tratamento de erros (try/except) robusto em todas as operações de E/S.
-
----
-
-## 🚀 Como Executar o Script
+## ⚙️ 3. Configuração do Ambiente
 
 ### Pré-requisitos
-Ter o Python 3 e o Pandas instalados. Se estiver usando o ambiente virtual criado na workspace:
+- Python 3.9+
+- Git
+
+### Instalação
 
 ```bash
-# Ativar o ambiente virtual (Linux)
-source .venv/bin/activate
+# 1. Clone o repositório
+git clone https://github.com/lucenfort/etl-financial-advisor.git
+cd etl-financial-advisor
 
-# Instalar dependências (caso não tenha feito)
-pip install pandas openpyxl
+# 2. Crie e ative o ambiente virtual
+python3 -m venv .venv
+source .venv/bin/activate  # Linux/macOS
+# .venv\Scripts\activate   # Windows
+
+# 3. Instale as dependências
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
-
-### Execução do ETL
-Para rodar o pipeline completo:
-```bash
-python etl_pipeline.py
-```
-
-Os logs do terminal mostrarão o progresso de cada fase e os arquivos finais serão criados ou atualizados imediatamente na pasta `output/`.
 
 ---
 
-## 📂 Fonte de Dados e Licença
+## 🚀 4. Execução dos Componentes
 
-Os dados transacionais utilizados e simulados neste projeto são baseados no dataset público:
-*   **Fonte dos Dados:** [Bank Transaction Data (Kaggle)](https://www.kaggle.com/datasets/apoorvwatsky/bank-transaction-data)
-*   **Licença:** [CC0: Public Domain](https://creativecommons.org/publicdomain/zero/1.0/) (Domínio Público)
+### 4.1 Execução do Pipeline ETL
+Para rodar o pipeline completo de ponta a ponta:
 
+```bash
+python3 etl_pipeline.py
+```
+
+O terminal exibirá logs em tempo real para cada fase (*Extract*, *Transform*, *Load*), e os relatórios enriquecidos serão gravados automaticamente na pasta `output/`.
+
+---
+
+## 📊 5. Regras Analíticas & Insights Gerados
+
+### 5.1 Enriquecimento Semântico de Transações
+Classificação automática das movimentações via processamento de termos da descrição:
+- `Uber` / `99` ➔ **Transporte**
+- `Supermercado` / `Restaurante` / `Padaria` ➔ **Alimentação**
+- `Netflix` / `Cinema` / `Shopping` ➔ **Entretenimento**
+- `PIX Recebido` / `Salário` / `Rendimento` ➔ **Receita**
+
+### 5.2 Módulo de Consultoria Financeira Automatizada
+- **Diagnóstico Orçamentário:** Identificação da categoria com maior evasão financeira (*maior ralo*).
+- **Projeção de Renda Fixa:** Simulação de rendimento anual baseado na taxa **Selic (10.5% a.a.)** para clientes superavitários.
+- **Alertas de Risco:** Geração de recomendações de contenção de despesas para perfis com balanço negativo ou sob risco de inadimplência.
+
+---
+
+## 📜 Créditos & Conjunto de Dados
+
+- **Dataset Base:** [Bank Transaction Data do Kaggle](https://www.kaggle.com/datasets/apoorvwatsky/bank-transaction-data)
+- **Licença:** [CC0: Public Domain](https://creativecommons.org/publicdomain/zero/1.0/) (Domínio Público).
+
+---
+
+## 👨‍💻 Autor
+
+- **Luciano Silva de Arruda**
+- Repositório Oficial: [`https://github.com/lucenfort/etl-financial-advisor`](https://github.com/lucenfort/etl-financial-advisor)
+- LinkedIn: [Luciano Arruda](https://linkedin.com/in/lucenfort)
