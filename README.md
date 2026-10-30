@@ -112,11 +112,3 @@ Classificação automática das movimentações via processamento de termos da d
 
 - **Dataset Base:** [Bank Transaction Data do Kaggle](https://www.kaggle.com/datasets/apoorvwatsky/bank-transaction-data)
 - **Licença:** [CC0: Public Domain](https://creativecommons.org/publicdomain/zero/1.0/) (Domínio Público).
-
----
-
-## 👨‍💻 Autor
-
-- **Luciano Silva de Arruda**
-- Repositório Oficial: [`https://github.com/lucenfort/etl-financial-advisor`](https://github.com/lucenfort/etl-financial-advisor)
-- LinkedIn: [Luciano Arruda](https://linkedin.com/in/lucenfort)
